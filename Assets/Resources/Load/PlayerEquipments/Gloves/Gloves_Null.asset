@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3ee3a06dcdae74bb33fd6c1ba810c4, type: 3}
+  m_Name: Gloves_Null
+  m_EditorClassIdentifier: 
+  scriptPath: Load/PlayerEquipments/Gloves/Gloves_Null
+  glovesName: Gloves_Null
+  glovesMesh: {fileID: 586481732289701080, guid: ce0819890a9561d40bcfb85b1b4549bb, type: 3}
+  glovesMaterials:
+  - {fileID: 2100000, guid: aecbc2960b45102408136ca86e193c76, type: 2}
+  weight: 0
+  defense: 0

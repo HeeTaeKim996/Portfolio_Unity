@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5b6424d1551354fb86e39ef707bd45, type: 3}
+  m_Name: Sword_Rapier
+  m_EditorClassIdentifier: 
+  scriptablePath: Load/PlayerEquipments/Weapon/Sword_Rapier
+  weaponName: '###Lapier'
+  modelPath: Load/PlayerEquipments/Weapon/Sword_Rapier
+  positionOffset: {x: 0.081, y: 0.058, z: 0.042}
+  rotationOffset: {x: 14.27, y: -106.266, z: 92.747}
+  scaleOffset: {x: 1, y: 1, z: 1}
+  damage: 20
+  weight: 0
+  lightAttack_1_Animation: LightAttack1
+  lightAttack_1_Duration: 1
+  lightAttack_1_HitBoxOnTime: 0.48
+  lightAttack_1_HitBoxOffTime: 0.629
+  lightAttack_1_swingSoundTime: 0.3553
+  lightAttack_1_DirectionType: 0
+  lightAttack_1_AttackDirection: {x: 0, y: -90, z: 0}
+  lightAttack_1_AttackType: 0
+  lightAttack_1_Attribute: 0
+  lightAttack_1_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  lightAttack_1_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  lightAttack_2_Animation: LightAttack2
+  lightAttack_2_Duration: 1
+  lightAttack_2_HitBoxOnTime: 0.44
+  lightAttack_2_HitBoxOffTime: 0.5
+  lightAttack_2_swingSoundTime: 0.3553
+  lightAttack_2_DirectionType: 0
+  lightAttack_2_AttackDirection: {x: 0, y: 90, z: 0}
+  lightAttack_2_AttackType: 0
+  lightAttack_2_Attribute: 0
+  lightAttack_2_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  lightAttack_2_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  lightAttack_3_Animation: LightAttack3
+  lightAttack_3_Duration: 1
+  lightAttack_3_HitBoxOnTime: 0.48
+  lightAttack_3_HitBoxOffTime: 0.629
+  lightAttack_3_swingSoundTime: 0.3553
+  lightAttack_3_DirectionType: 0
+  lightAttack_3_AttackDirection: {x: 0, y: -90, z: 0}
+  lightAttack_3_AttackType: 0
+  lightAttack_3_Attribute: 0
+  lightAttack_3_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  lightAttack_3_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  lightAttack_4_Animation: LightAttack4
+  lightAttack_4_Duration: 1
+  lightAttack_4_HitBoxOnTime: 0.44
+  lightAttack_4_HitBoxOffTime: 0.5
+  lightAttack_4_swingSoundTime: 0.3553
+  lightAttack_4_DirectionType: 0
+  lightAttack_4_AttackDirection: {x: 0, y: 90, z: 0}
+  lightAttack_4_AttackType: 0
+  lightAttack_4_Attribute: 0
+  lightAttack_4_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  lightAttack_4_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  lightAttack_5_Animation: LightAttack5
+  lightAttack_5_Duration: 1.4
+  lightAttack_5_HitBoxOnTime: 0.701
+  lightAttack_5_HitBoxOffTime: 0.766
+  lightAttack_5_swingSoundTime: 0.701
+  lightAttack_5_DirectionType: 1
+  lightAttack_5_AttackDirection: {x: 0, y: 0, z: 0}
+  lightAttack_5_AttackType: 0
+  lightAttack_5_Attribute: 0
+  lightAttack_5_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  lightAttack_5_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  heavyAttackCharging_Animation: HeavyAttackCharging
+  heavyAttackCharging_minChargeTime: 0.656
+  heavyAttackCharging_maxChargeTime: 2.5
+  heavyAttack_Animation: HeavyAttack
+  heavyAttack_Duration: 0.75
+  heavyAttack_HitBoxOnTime: 0.026
+  heavyAttack_HitBoxOffTime: 0.14
+  heavyAttack_swingSoundTime: 0.026
+  heavyAttack_DirectionType: 0
+  heavyAttack_AttackDirection: {x: 0, y: 0, z: 0}
+  heavyAttack_AttackType: 0
+  heavyAttack_Attribute: 0
+  heavyAttack_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  heavyAttack_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  runningAttack_Animation: RunningAttack
+  runningAttack_Duration: 0.958
+  runningAttack_HitBoxOnTime: 0.552
+  runningAttack_HitBoxOffTime: 0.62
+  runningAttack_swingSoundTime: 0.552
+  runningAttack_DirectionType: 0
+  runningAttack_AttackDirection: {x: 0, y: 0, z: 0}
+  runningAttack_AttackType: 0
+  runningAttack_Attribute: 0
+  runningAttack_SwingSound: {fileID: 8300000, guid: 01999991d21504b5abb7a554bba05227, type: 3}
+  runningAttack_ImpactSound: {fileID: 8300000, guid: 11de9b6a681b46542b9393c230da5fdb, type: 3}
+  lightAttack_1_Damage: 30
+  lightAttack_1_Power: 30
+  lightAttack_1_Stamina: 32
+  lightAttack_2_Damage: 30
+  lightAttack_2_Power: 30
+  lightAttack_2_Stamina: 32
+  lightAttack_3_Damage: 30
+  lightAttack_3_Power: 30
+  lightAttack_3_Stamina: 32
+  lightAttack_4_Damage: 30
+  lightAttack_4_Power: 30
+  lightAttack_4_Stamina: 30
+  lightAttack_5_Damage: 35
+  lightAttack_5_Power: 35
+  lightAttack_5_Stamina: 32
+  heavyAttack_Damage: 30
+  heavyAttack_Power: 35
+  heavyAttack_Stamina: 40
+  heavyAttackAdditionalDamage: 37
+  runningAttack_Damage: 35
+  runningAttack_Power: 35
+  runningAttack_Stamina: 36

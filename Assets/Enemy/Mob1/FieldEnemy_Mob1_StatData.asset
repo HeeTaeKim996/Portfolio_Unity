@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d46b96b46ff3441a00dfdbfcc634a2, type: 3}
+  m_Name: FieldEnemy_Mob1_StatData
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  runningSpeed: 4.5
+  walkingSpeed: 3
+  detectRange: 5.3
+  giveUpRange: 5.3
+  giveUpTime: 10
+  staggered: 60
+  knockedDown: 70
+  attack_Chain1_Right1_Damage: 40
+  attack_Chain1_Right1_Power: 60
+  attack_Chain1_Left2_Damage: 40
+  attack_Chain1_Left2_Power: 60
+  attack_Chain1_Right3_Damage: 60
+  attack_Chain1_Right3_Power: 80
+  attack_LeftThrust_Damage: 65
+  attack_LeftThrust_Power: 110
+  attack_CloseLefThrust_Damage: 55
+  attack_CloseLeftThrust_Power: 80
+  attack_Grab_Damage: 22
+  attack_Grab_Power: 0
+  shard: 1500

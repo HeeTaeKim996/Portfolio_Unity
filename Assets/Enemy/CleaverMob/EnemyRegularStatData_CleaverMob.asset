@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b60eb93348d098409d92bd7ae4ba684, type: 3}
+  m_Name: EnemyRegularStatData_CleaverMob
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  runningSpeed: 3
+  walkingSpeed: 1.5
+  detectRange: 5
+  giveUpRange: 5
+  giveUpTime: 10
+  staggered: 25
+  knockedDown: 50
+  attackDatas:
+  - attackName: Attack_SwingCross
+    attackDamage: 35
+    attackPower: 35
+  - attackName: Attack_Stab
+    attackDamage: 35
+    attackPower: 20
+  shard: 150
+  shieldPower: 40

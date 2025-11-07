@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6860872818c6a1541918cb7224ef4524, type: 3}
+  m_Name: HealingPotionTransformData
+  m_EditorClassIdentifier: 
+  ItemName: 
+  modelPath: 
+  positionOffset: {x: 0.0001636701, y: 0.001273431, z: 0.0003655101}
+  rotationOffset: {x: -189.749, y: -170.676, z: 17.43401}
+  scaleOffset: {x: 0.0836853, y: 0.08368529, z: 0.08368529}
