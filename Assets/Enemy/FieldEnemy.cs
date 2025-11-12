@@ -36,7 +36,7 @@ public class FieldEnemy : Enemy
     public Slider healthSlider;
     public Slider easeHealthSlider;
     protected HealthBarLookAtController_Enemy healthBarLookAtController_Enemy;
-    public event System.Action<float> OnTakeDamage; // System. 을 붙인 이유는, using System 과 using UnityEngine에서 중복으로 충돌
+    public event System.Action<float> OnTakeDamage;
 
     protected int originalLayer;
 
@@ -204,12 +204,12 @@ public class FieldEnemy : Enemy
 
         if (easeHealthSlider.value != health)
         {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, 0.05f); // (3)항은 비율값
+            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, 0.05f);
         }
     }
 
     public override void OnDamage(float damage, float power, DirectionType directionType, Vector3 fromNormal, Quaternion attackDirection, AttackType attackType, Vector3 hitPoint, Vector3 hitDirection, Attribute attribute)
     {
-        OnTakeDamage?.Invoke(damage); // 여기서 ? 는 이벤트 OnTakeDamage의 구성요소(구독한 매서드)가 null 일시, 아무것도 안하고, != null 일시, 구독한 매서드를 발동
+        OnTakeDamage?.Invoke(damage);
     }
 }

@@ -11,7 +11,6 @@ public class PlayerHealth : LivingEntity
 {
     [HideInInspector]
     public PlayerMovement playerMovement;
-    // 추후 적 히트박스가 플레이어 타격시, PlayerMovement의 State값을 참조하기 위해 Public으로 참조
     [HideInInspector]
     public PlayerController playerController;
     private Animator playerAnimator;
@@ -132,7 +131,7 @@ public class PlayerHealth : LivingEntity
     }
 
 
-    protected new void OnEnable() // livingnEntity의 OnEnable 상속안함
+    protected new void OnEnable()
     {
         dead = false;
 
@@ -150,14 +149,14 @@ public class PlayerHealth : LivingEntity
 
     private void OnDisable()
     {
-        // 아무래도 this.enabled =f alse; 전에 참조하고있던것들을 false 해야 오류가 안나오는듯..
+
     }
 
     public void EndObject()
     {
         gameOverManager.ActiveGameOverManager();
 
-        isFirstSetUp = true; // isIFrstSetUp을 OnEnable이 아닌, 여기에 위치한 이유는, OnENable에 놓을시, 거기서 발동되는 것보다, PlayerStatusManager에서 SEtUp발동이 더 일찍 되어, 셋업 때 health = maxHealth가 발동되지 않는 경우가 있기 때문
+        isFirstSetUp = true;
 
         playerMovement.enabled = false;
         playerController.gameObject.SetActive(false);
@@ -196,8 +195,6 @@ public class PlayerHealth : LivingEntity
 
     private void Update()
     {
-        // 추후 UIManager 스크립트 참조하여 힐쓰슬라이더 텍스트 표시? 추가 필요 (추후수정!!)
-
 
         if (healthSlider.value > health)
         {
@@ -210,7 +207,7 @@ public class PlayerHealth : LivingEntity
 
         if (easeHealthSlider.value != health)
         {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, 0.05f); // (3)항은 비율값
+            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, 0.05f);
         }
 
         if (staminaSlider.value != stamina)
@@ -220,7 +217,7 @@ public class PlayerHealth : LivingEntity
 
         if (easeStaminaSlider.value != stamina)
         {
-            easeStaminaSlider.value = Mathf.Lerp(easeStaminaSlider.value, stamina, 0.05f); // (3)항은 비율값
+            easeStaminaSlider.value = Mathf.Lerp(easeStaminaSlider.value, stamina, 0.05f); 
         }
         StaminaRegenerate();
     }
@@ -329,8 +326,6 @@ public class PlayerHealth : LivingEntity
                     playerMovement.InvokeShieldingBack(directionType, refinedFrom, rotatedDiffAngle, crossY);
                 }
                 return;
-                // 추후 기력 다하면 쉴딩 깨지며 State.Vulnerable 되는 모션?? 그것도 필요할듯..
-                // 추후 여기에 뭐 불방 전기방 등..감소대미지 입는 것도 필요할듯? 생각만해도 너무 복잡하다.
             }
 
         }
@@ -409,8 +404,6 @@ public class PlayerHealth : LivingEntity
         base.RestoreHealth(newHealth);
     }
 
-
-    // 리플레이 재생시, OnAnimatorIK 활성화가 필요하여 이곳에 코드 작성함
     private void OnAnimatorIK(int layerIndex)
     {
         if (TestScene_ReplayManager.instance != null)

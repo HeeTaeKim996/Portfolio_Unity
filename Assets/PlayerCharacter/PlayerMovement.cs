@@ -153,8 +153,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 queuedMovingVector;
 
     private int discerningState = 0;
-    /* enum의 요소들은 상호배제관계이므로, 포함관계로 활용되는 discerningState에 적합하지 않기에,
-       0: 적인지못함, 1: 적인지 2: 대치상태 로 관리함 */
+
 
     private float alertTimeMax = 6f;
     private float alertTime = 0f;
@@ -232,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    if (currentStateInfo.IsName(lightAttackAnimations[i])) // c# 에는 [:4] 같은 기능이 없음
+                    if (currentStateInfo.IsName(lightAttackAnimations[i])) 
                     {
                         isInAttackAnimations = true;
                         break;
@@ -252,7 +251,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (isShielding && !isShieldingOn) // ShieldingOn 일 때에는 UpperLyaerChagneAnimation 이 발동하지 않아야, ShieldingBack 모션에서 상체의 움직임이 매번 나올 수 있음
+        if (isShielding && !isShieldingOn)
         {
             UpperLayerChangeAnimation(Shielding, 0.05f);
         }
@@ -266,25 +265,7 @@ public class PlayerMovement : MonoBehaviour
             UpperLayerWeightTo0(0.1f);
 
         }
-        /* 
-        현재 사용중인 쉴드 애니매이션에 대한 상황 정리.
-        현재 어퍼레이어에 사용중인 쉴드 애니매이션은 하나다. 베이스 레이어에 사용중인 쉴드 애니매이션도 하나이고. 그리고 베이스레이어의 4방향 모션에서, 하나의 어퍼레이어 애니매이션을 오버라이드 하는 방식을 사용했음.
-        이러면 문제가, 1) 쉴딩 모션이 힙이 측면을 바라보는 것으로 만들어 졌기에, 베이스레이어가 전방 및 후방이동 모션일 때에, 쉴드를 들면 모션이 어색함. 또한 4방향별 쉴딩 애니매이션이 바뀔 때마다 힙의 위치가 바뀌기에, 쉴딩 모션이 어색함..
-        2) DiscerningState >= 1 && isShielding 상태에서 이동중이다가, 이동을 안하면, OnAnimatorIK 가 발동중이다가, 발동이 안되어, SetLookAtWeight(0) 이 된다. 이 때, 순간적으로 힙이 측면을 바라보다가, 전방을 바라보게 되어,
-          순간적으로 플레이어가 -0.07f만큼 오른쪽으로 돌아갔던 상체가, 0으로 원위치하여, 플레이어는 위의, BaseLayerChangeAnimation(Shielding1, blemdTime) 의 BlendTime 기간동안, 플레이어가 순간적으로 왼쪽을 바라보게 되는 문제가 있다.
-          현재는 이 문제를 해결하기 위해, discerningState == 0 일 때에, 위 BaseLayerChangeAnimation(Shielding1, blemdtime) 이 발동될 때에 blendTime 을 0.01로 두어, 사용자가 인식 못하게 했음.
 
-        결국 1) 은 해결 자체를 못했고, 2)도 임시방편으로 해결했다( 물론 2) 의 상황이 실제 플레이중 나올 확률은 드물지만..)
-
-        위 두 문제를 해결하기 위해, 이전에, 4방향별 쉴딩 애니매이션을 동서남북별 다르게 만들어 처리해봤지만, 이렇게 했을 때 문제가, 4방향별 onAnimatorIK 의 theta 값은 즉시 바뀌지만, 애니매이션의 blendTime 은 0 이 아니기에, 위의 2) 같은 문제가 방향이 바뀔 때마다 항상 일어난다..
-        OnAnimatorIK의 Theta값을 코루틴을 사용하여, 천천히 바뀌도록도 시도해봤지만, 왜인지는 모르겠지만, OnAnimatorIK 가 프레임별 바뀌는 theta값을 인식 못하는 것 같았음.. 아무 효과가 없었음.
-        또한, 이렇게 하면 4방향이 바뀔 때마다, 베이스레이어와 어퍼레이어가 동시에 바뀌는데, 이 때 어퍼레이어의 애니매이션의 전환 속도가 매우 느리게 되는 버그도 발견됐음.. @@
-
-        위 @@ 문제에 대한 해결책으로, 쉴딩 애니매이션을 베이스레이어로 총 8개(전방걷기,전방달리기 쉴딩 * 4(서남북) ) 을 만드는 것도 생각해봤지만, 애니매이션을 8개 만드는 것 자체가 비효율적이며, 또한 @@ 문제를 해결한다 해도, 
-        4방향별 OnAnimatorIK의 theta값이 즉시 변해서 생기는 문제는 해결을 못하기 때문에, 시도 안함
-
-        결국 기존 방법을 고수했으며, 1), 2) 의 문제는 해결하지 못함
-        */
 
         // Running Count Update
         if (playerController.runCountStart)
@@ -310,7 +291,6 @@ public class PlayerMovement : MonoBehaviour
 
     // @@PrimaryMethods
     public void BaseLayerChangeAnimation(string newState, float blendTime, int usingNormalizedTime = 0)
-    // (3)항: 1 입력시, 기존 애니매이션과 재생시간 동기화
     {
         if (newState == baseLayerCurrentState)
         {
@@ -350,7 +330,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void UpperLayerChangeAnimation(string newState, float blendTime, int usingNormalizedTime = 0)
-    // (4)항: 1 입력시, 기존 애니매이션과 재생시간 동기화
     {
         if (newState == upperLayerCurrentState)
         {
@@ -493,7 +472,6 @@ public class PlayerMovement : MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectRange, detectLayers);
         Transform[] detectedTransform = new Transform[colliders.Length];
-        // Transform 배열 초기화
 
         if (colliders.Length == 0)
         {
@@ -677,9 +655,7 @@ public class PlayerMovement : MonoBehaviour
         if ((playerHealth.state == State.Normal || playerHealth.state == State.VulMovable) && movingState != MovingState.Run && (discerningState == 2 || (discerningState == 1 && isShielding)))
         {
             playerAnimator.SetLookAtWeight(1f, 1f, 0f, 0f, 0f);
-            //playerAnimator.SetLookAtWeight(0.8f, 0.4f, 1.0f, 0.5f, 0.1f); // -> 통상적인값이나, 방패를 들 시  방패가 전방을 향해야 하기 때문에, (1), (2)를 1.0으로 처리함
-            /* (1)전체가중치, (2)몸통가중치, (3)머리가중치, (4)눈시선고정치, 
-             * (5)캐릭터가목표를 고정하고자할 때 시선고정정도- 이상하게 높으면 다른 바디 로테이션이 안됨 */
+
 
             float theta = -0.07f;
 
@@ -703,7 +679,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            // y값 보정계수 계산
+            // y占쏙옙 占쏙옙占쏙옙占쏙옙占� 占쏙옙占�
             float interpolationCoefficientForY;
             float x1 = 12.2328f;
             float y1 = -2.579375f;
@@ -727,7 +703,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (playerHealth.state == State.Normal && movingState != MovingState.Run && (discerningState == 0 && isShielding) && playerController.isMoving)
         {
-            // 이 내용은, 적이 없을 때, 방패를 들고, 이동을 할 때, WHoleBodyLayer와 UpperBodyLayer의 애니매이션 차로 인한 루트본의 차이로 플레이어가 왼쪽을 바라보던 문제가 있어서, 명목상의 SetLookAtPosition을 만들어 해결함. 코드 내용은 위와 구조적으로 동일하며, 필요한 값만 입력함
             playerAnimator.SetLookAtWeight(1f, 1f, 0f, 0f, 0f);
             float theta = -0.07f;
             Vector3 norminalPosition = transform.position + transform.forward * 6f;
@@ -826,35 +801,7 @@ public class PlayerMovement : MonoBehaviour
 
             
 
-            /*
-            int returnInt = CommonMethods.TriggerTwiceInterval(didFirstStepSound, normalizedTime, footStepSoundTime, footStepSoundTime + 0.5f);
-            if (returnInt == 0)
-            {
-                AudioClip playClip;
-
-                if (movingState == MovingState.Run)
-                {
-                    int footRunIndex = Random.Range(0, footPrintRunSounds_Rock.Count);
-                    playClip = footPrintRunSounds_Rock[footRunIndex];
-                }
-                else
-                {
-                    int footStepIndex = Random.Range(0, footPrintSounds_Rock.Count);
-                    playClip = footPrintSounds_Rock[footStepIndex];
-                }
-
-                float volume = 0.5f  * refinedMovingVector.magnitude * (movingState == MovingState.Run ? 1.24f : 1f); // 우측값은 우항의 첫째volume이 1f이기 때문에, 의미가 없지만, 추후 발소리 자체를 키워서 문제 해결 필요
-
-                CommonMethods.AudioPlayOneShot(movementAudio, playClip, volume);
-                // PlayOneShot 은 기존 오디오소스가 재생중인 것을 취소하지 않고, 새로운 클립을 추가 재생
-
-                didFirstStepSound = true;
-            }
-            else if (returnInt == 1)
-            {
-                didFirstStepSound = false;
-            }
-            */
+    
 
             if(didStepSound == false && CommonMethods.GetQuadrantsBooleanFromTwoPoints(normalizedTime, footStepSoundTime, footStepSoundTime + 0.5f) == true)
             {
@@ -884,7 +831,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerHealth.state == State.Normal || playerHealth.state == State.VulMovable)
         {
-            Quaternion moveVecTowardRotation = Quaternion.identity; // identity를 배치한 이유는 의미없지만, C# 오류경고 방지용도(할당되지않은.. 문제)
+            Quaternion moveVecTowardRotation = Quaternion.identity; 
             float rotationSpeed = 15f;
 
             if (playerController.isMoving)
@@ -931,7 +878,7 @@ public class PlayerMovement : MonoBehaviour
         if (nextAction == "LightAttack")
         {
             nextAction = null;
-            queuedMovingVector = Vector3.zero; // 예약처리 변경시 다른 예약들 변수 초기화 필요 주의
+            queuedMovingVector = Vector3.zero;
             InvokeLightAttack();
         }
         else if (nextAction == "Dodge")
@@ -975,7 +922,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 StopCoroutineRoutine(currentCoroutine);
             }
-            // 위스탑코루틴은 state.Invulnerable 때 사용 ( 스탑코루틴에 queueMovingVector = Vector3.zero 가 있어서. 혹시나 추후 수정할 때 위의 dodgeDirection = queue.. 여기 문제 생길까봐 밑에 배치함
 
             if (movingState == MovingState.Forward)
             {
@@ -1003,7 +949,7 @@ public class PlayerMovement : MonoBehaviour
             nextAction = "Dodge";
             if (movingVector != Vector3.zero)
             {
-                queuedMovingVector = movingVector.normalized;  //  !! queuedMovingVector가 저장됐는데, 스탑코루틴매서드 등으로 사용이 안되는 경우가 생길 것으로 예상된다. 추후 스탑코루틴매서드에서 이 벡터도 Vector3.zero 처리잊지말자
+                queuedMovingVector = movingVector.normalized;
             }
         }
     }
@@ -1244,7 +1190,7 @@ public class PlayerMovement : MonoBehaviour
         if(animationInfoDictionary["heavyAttack"].Stamina <= 0)
         {
             playerHealth.InformStamina0();
-            ResetRoutine(); // 이유는 모르겠지만, 위에서 currentCoroutine = StartCoroutine(heavyAttackChargingRoutine); 에서 currentCoroutine이 입력되는 것보다, 여기 구문이 더 빠르게 작동하여, currentCoroutine == null 로 처리됨.. 따라서 스탑코루틴 안쓰고 ResetRoutine 을 사용하고, 밑에 break 사용. 모든 스태미나 사용하는 코루틴에 모두 적용
+            ResetRoutine();
             yield break;
         }
 
@@ -1996,7 +1942,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator ShelterRestStartAction(Vector3 shelterPosition)
     {
-        playerHealth.SetState(State.Invulnerable);// state = State.Normal이면 애니매이션 재생이 안되니, 그외 아무거나 사용
+        playerHealth.SetState(State.Invulnerable);
 
         if (baseLayerCurrentState != ShelterRestDoing1)
         {

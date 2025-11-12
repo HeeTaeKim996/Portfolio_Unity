@@ -20,7 +20,7 @@ public class ForTestController_ArbitraryValueController : MonoBehaviour
     {
         testValueController = GetComponentInParent<ForTest_ArbitraryValueController>();
         slider = GetComponent<Slider>();
-        slider.onValueChanged.AddListener(OnSliderValueChanged); // 유니티 자체 이벤트로, 슬라이더 값 변경시, AddLister(MethodA); 로 methodA가 발동되도록함
+        slider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
     public void SetMInMaxValue(float newMinValue, float newMaxValue, float newCurrentValue)

@@ -75,9 +75,9 @@ public static class CommonMethods
         Vector3 lineDirection = (lineEnd - lineStart).normalized;
         float lineLength = Vector3.Distance(lineStart, lineEnd);
 
-        float projectLength = Vector3.Dot(point - lineStart, lineDirection); // 증명은 수리증명노트 참조 (현재 완전히 못했지만..)
+        float projectLength = Vector3.Dot(point - lineStart, lineDirection);
 
-        projectLength = Mathf.Clamp(projectLength, 0, lineLength); // 피격시, 투영된 벡터 외부에 closestPoint가 할당될 수 있기 때문에 Clamp로 상하한선 조정
+        projectLength = Mathf.Clamp(projectLength, 0, lineLength);
 
         return lineStart + lineDirection * projectLength;
 

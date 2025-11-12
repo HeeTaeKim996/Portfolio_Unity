@@ -61,7 +61,6 @@ public class LocalChunkManager : MonoBehaviour
                 return chunk;
             }
         }
-        Debug.LogError("ChunkManager : allChunks 에 포함되지 않는 옵젝이 있음");
         return null;
     }
 
@@ -160,7 +159,7 @@ public class LocalChunkManager : MonoBehaviour
 
         if(loadingChunkCount < 0)
         {
-            Debug.LogError("LocalChunkManager : loadingChunkCount 가 0 미만으로 처리됨");
+
         }
 
     }

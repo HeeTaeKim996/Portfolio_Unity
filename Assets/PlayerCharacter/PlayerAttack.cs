@@ -42,7 +42,6 @@ public class PlayerAttack : MonoBehaviour
         heavyAttackDamage = playerAttackDamagesInfo.heavyAttack_Damage;
         heavyAttackAdditionalDamage = playerAttackDamagesInfo.heavyAttackAdditionalDamage;
 
-        // ÀÌ·¸°Ô µû·Î µÐ ÀÌÀ¯´Â, ¹ØÀÇ  SetHeavyAttackDamage¿¡¼­, Á÷Á¢ µñ¼Å³Ê¸®ÀÚ·á¸¦ »Ì¾Æ¼­ »õ·Î ³õÀ» °æ¿ì, Â÷Áö°ø°ÝÀ» ÇÒ ¶§¸¶´Ù ´ë¹ÌÁö Áõ°¡°¡ ´©ÀûµÇ¾î ¿Ã¶ó°¨
     }
 
 
@@ -65,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Á¸ÀçÇÏÁö ¾Ê´Â °ø°Ý ÀÌ¸§");
+            Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½");
         }
     }
 

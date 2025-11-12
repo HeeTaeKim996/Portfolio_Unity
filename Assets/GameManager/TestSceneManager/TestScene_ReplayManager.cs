@@ -261,7 +261,7 @@ public class TestScene_ReplayManager : MonoBehaviour
 
         if (frames.Count == 0)
         {
-            Debug.LogWarning("TestScene_ReplayManager : ¸®ÇÃ·¹ÀÌµ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù");
+            Debug.LogWarning("TestScene_ReplayManager : ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
             return;
         }
 
@@ -563,6 +563,4 @@ public class TestScene_ReplayManager : MonoBehaviour
         AnimatorStateInfo enemyStateInfo = enemyAimator.GetCurrentAnimatorStateInfo(0);
         enemyNormalizedTime = enemyStateInfo.normalizedTime % 1;
     }
-
-
 }

@@ -76,7 +76,6 @@ public class LocalChunk : MonoBehaviour
         }
     }
 
-    // 로컬청크 연산효율작업
     public void Active()
     {
         if(actSuiCoroutine != null)
@@ -201,7 +200,6 @@ public class LocalChunk : MonoBehaviour
 
 
 
-    // 재생성작업
     public void DeActive()
     {
         foreach(FieldEnemy fieldEnemy in chunkEnemies)

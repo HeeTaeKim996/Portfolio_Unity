@@ -18,7 +18,7 @@ public enum DirectionType
 public enum AttackType
 {
     Normal,
-    NotShieldable // ÃßÈÄ Ãß°¡
+    NotShieldable // ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 }
 
 public enum Attribute

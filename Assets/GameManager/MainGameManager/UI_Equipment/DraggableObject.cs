@@ -105,10 +105,9 @@ public class DraggableObject : MonoBehaviour, IPointerUpHandler, IBeginDragHandl
         if (isImmediateDrag) return;
 
         rectTransform.anchoredPosition += eventData.delta;
-        // anchoredPosition은 현재 옵젝에 대한 위치 정보이며, eventData.delta 는 현재 프레임에서 이전 프레임까지의 마우스(터치)의 이동량을 Vector2 로 나타낸 값
     }
 
-    public void OnPointerUp(PointerEventData eventData) // OnPointerUp 은 터치를 끝냈을 때 발동, OnDragEnd는 터치중이라도, 드래그가 멈추면 발동
+    public void OnPointerUp(PointerEventData eventData)
     {
         if (isImmediateDrag)
         {
@@ -373,7 +372,7 @@ public class DraggableObject : MonoBehaviour, IPointerUpHandler, IBeginDragHandl
 
         if(parentDragHanler != null)
         {
-            ExecuteEvents.Execute(parentDragHanler.gameObject, eventData, ExecuteEvents.beginDragHandler); // ExecuteEvents.Execute 는, 유니티 자체 이벤트(지금사용하는 DragHandler등..) 의 (3)항을  (2)항의 데이터를 기반으로, (1)에게 강제로 시행시킨다
+            ExecuteEvents.Execute(parentDragHanler.gameObject, eventData, ExecuteEvents.beginDragHandler);
 
 
             parentDragCoroutine = StartCoroutine(TransferDragToParent(parentDragHanler, eventData));

@@ -50,7 +50,7 @@ public class ObstacleFading_OverlapBox_Custom_Multi : MonoBehaviour
     {
         while (true)
         {
-            Collider[] colliders = Physics.OverlapBox(transform.position + boxPosition, boxSize / 2f, Quaternion.Euler(boxRotation), playerLayer); // Size에서 2로 나누는 이유는, Physics.OverlapBox의 사이즈는 2로 나눈 것을 기준으로 작동. 반대로 기즈모 생성 박스는 2로 나눌 필요 없음
+            Collider[] colliders = Physics.OverlapBox(transform.position + boxPosition, boxSize / 2f, Quaternion.Euler(boxRotation), playerLayer);
             if(colliders.Length > 0)
             {
                 if (!isFaded)

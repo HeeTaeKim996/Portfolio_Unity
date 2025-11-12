@@ -275,7 +275,7 @@ public class Enemy_CleaverMobMovement : MonoBehaviour
 
         if (totalWeight == 0)
         {
-            Debug.LogError("Enemy : DecideAction Total Weight 가 0");
+            Debug.LogError("Enemy : DecideAction Total Weight 占쏙옙 0");
         }
 
         int randomWeightPoint = Random.Range(0, totalWeight); 
@@ -291,7 +291,7 @@ public class Enemy_CleaverMobMovement : MonoBehaviour
             }
         }
 
-        Debug.LogError("Enemy : 행동찾을수없음");
+        Debug.LogError("Enemy : 占썅동찾占쏙옙占쏙옙占쏙옙占쏙옙");
         return null;
 
     }
@@ -1175,7 +1175,7 @@ public class Enemy_CleaverMobMovement : MonoBehaviour
             distanceToTarget = flatDirectionToTarget.magnitude;
             if (flatDirectionToTarget == Vector3.zero)
             {
-                faceTargetRotation = Quaternion.identity; // 위if문을 충족할 경우, 경고로 Look rotation viewing vector is zero 로 나오기 때문에 이렇게 처리함
+                faceTargetRotation = Quaternion.identity;
             }
             else
             {
@@ -1196,7 +1196,7 @@ public class Enemy_CleaverMobMovement : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(fixedUpdateInterval); // 순서 yield return new를 먼저 배치해야함. 안그럼 초기화작업에 데이터가 아직 덜 들어왔을 때 매서드 발동
+            yield return new WaitForSeconds(fixedUpdateInterval);
             FIxedIntervalUpdate();
         }
     }

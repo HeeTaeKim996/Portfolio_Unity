@@ -132,12 +132,6 @@ public class EquipmentController : MonoBehaviour
         {
             canvasGroup.alpha = 1;
         }
-        /* 위는 게임 진행을 위해서는 전혀 필요가 없는 것이지만, 게임 시작 전에 시뮬레이터에 backRect가 화면을 다 차지하는 게 너무 거슬려서 사용함..(실제 게임 플레이에는 전혀 문제될 게 없음)
-           방법은, 하이라키에서 backRect에 컴퍼넌트 CanvasGroup을 추가 -> alpha값을 0으로 설정해서 안보이게 하고(게임시작전 시뮬레이터의 화면에서..) Awake때 보이도록 만듬.,
-           추후에 backRect 내의 요소들의 배치를 Scene에서 수정할 때, alpha값이 0이라 활성화돼도 안보이므로.. 꼭 수정할 때에는 alpha값 1로 만들고 수정하자! */
-
-
-
     }
 
     private void Start()
@@ -151,7 +145,7 @@ public class EquipmentController : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(DelayEquipItems()); // OnEnable 때 이렇게 처리 안하면, WeaponItem의데이터를 받는 속도보다, OnEnable이 떠 빨리 발동하는 것 같다.. 그로 인해 오류가 생기므로 이렇게, 코루틴으로 1프레임 늦게 처리되도록함
+        StartCoroutine(DelayEquipItems());
     }
 
     private IEnumerator DelayEquipItems()
@@ -160,7 +154,7 @@ public class EquipmentController : MonoBehaviour
 
         // Weapon
         Transform startEquipWeapon = equipWeaponSpace.childCount > 0 ? equipWeaponSpace.GetChild(0) : null;
-        WeaponItem weaponItem = startEquipWeapon?.GetComponent<WeaponItem>(); // 연산자 ?. 는 ?. 앞의 객체가 null 일 시, null을 반환
+        WeaponItem weaponItem = startEquipWeapon?.GetComponent<WeaponItem>();
         if (weaponItem != null)
         {
             EquipWeapon( startEquipWeapon.gameObject, weaponItem.weaponData);
@@ -172,7 +166,7 @@ public class EquipmentController : MonoBehaviour
 
         // SecondaryWeapon
         Transform startEquipSecondaryWeapon = equipSecondaryWeaponSpace.childCount > 0 ? equipSecondaryWeaponSpace.GetChild(0) : null;
-        SecondaryWeaponItem secondaryWeaponItem = startEquipSecondaryWeapon?.GetComponent<SecondaryWeaponItem>(); // 연산자 ?. 는 ?. 앞의 객체가 null 일 시, null을 반환
+        SecondaryWeaponItem secondaryWeaponItem = startEquipSecondaryWeapon?.GetComponent<SecondaryWeaponItem>();
         if (secondaryWeaponItem != null)
         {
             EquipSecondaryWeapon(startEquipSecondaryWeapon.gameObject, secondaryWeaponItem.secondaryWeaponData);
@@ -184,7 +178,7 @@ public class EquipmentController : MonoBehaviour
 
         // UpperClothe
         Transform startEquipUpperClothe = equipUpperClotheSpace.childCount > 0 ? equipUpperClotheSpace.GetChild(0) : null;
-        UpperClotheItem upperClotheItem = startEquipUpperClothe?.GetComponent<UpperClotheItem>(); // 연산자 ?. 는 ?. 앞의 객체가 null 일 시, null을 반환
+        UpperClotheItem upperClotheItem = startEquipUpperClothe?.GetComponent<UpperClotheItem>();
         if (upperClotheItem != null)
         {
             EquipUpperClothe(startEquipUpperClothe.gameObject, upperClotheItem.upperBodyClothingSet);
@@ -329,7 +323,7 @@ public class EquipmentController : MonoBehaviour
 
         Scene equipmentScene = SceneManager.GetSceneByName("EquipmentScene");
 
-        foreach (GameObject rootObj in equipmentScene.GetRootGameObjects()) // GetRootGameObject는 하이라키에 있는, 부모가 없는(자신이 최종부모인) 오브젝트
+        foreach (GameObject rootObj in equipmentScene.GetRootGameObjects())
         {
             rootObj.transform.position += new Vector3(0, 100, 0);
         }
@@ -405,7 +399,6 @@ public class EquipmentController : MonoBehaviour
         }
         else
         {
-            Debug.Log("EquipmentScene이 열려있지 않으나, 씬을 닫으라는 매서드 발생오류");
         }
     }
 
@@ -829,12 +822,12 @@ public class EquipmentController : MonoBehaviour
             }
             else
             {
-                Debug.LogError("EquipmentControlelr : 새로 획득한 아이템에서, 스크립트 컴퍼넌트를 찾을 수 없음");
+
             }
         }
         else
         {
-            Debug.Log("EquipmentController : 추후 UI로 생성! 잔여슬롯없음");
+
         }
     }
 
@@ -1106,7 +1099,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController:Weapon Path 오류 추정");
+
                     }
                     break;
                     
@@ -1123,7 +1116,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : Secondary Weapon의 ScriptablePath 오류 추정");
+
                     }
                     break;
                 case "UpperClothe":
@@ -1139,7 +1132,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : UpperClothe의 ScriptablePath 오류 추정");
+
                     }
                     break;
                 case "UnderClothe":
@@ -1154,7 +1147,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : UnderClothe의 ScriptablePath 오류 추정");
+
                     }
                     break;
                 case "Helmet":
@@ -1170,7 +1163,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : HelmetData의 ScriptablePath 오류 추정");
+
                     }
                     break;
                 case "Shoes":
@@ -1186,7 +1179,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : ShoesData의 ScriptablePath 오류 추정");
+
                     }
                     break;
                 case "Gloves":
@@ -1202,7 +1195,7 @@ public class EquipmentController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogError("EquipmentController : Gloves의 ScriptablePath 오류 추정");
+
                     }
                     break;
             }

@@ -44,12 +44,12 @@ public class WorldChunkManager : MonoBehaviour
 
     
     }
-
+        
 
     private void LoadChunk(WorldChunkData chunkData)
     {
         GameObject chunk = Instantiate(chunkData.prefab, chunkData.position, Quaternion.identity);
-        activeChunks[chunkData.position] = chunk; // 이렇게 하여, activeChunks.Add 와 같은 효과(+중복방지효과기능)
+        activeChunks[chunkData.position] = chunk;
     }
 
     private void UnloadChunk(Vector3 chunkPos)

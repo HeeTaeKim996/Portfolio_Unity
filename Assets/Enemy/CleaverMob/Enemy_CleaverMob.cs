@@ -107,7 +107,6 @@ public class Enemy_CleaverMob : FieldEnemy
 
                 if (diffAngle < 80f)
                 {
-                    // 추후 쉴드백모션도 처리!
                     return;
                 }
 

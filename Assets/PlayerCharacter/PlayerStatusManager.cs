@@ -151,10 +151,6 @@ public class PlayerStatusManager : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         statusInfoPanel = FindObjectOfType<StatusInfoPanel>();
         shelterRestInfo = UIManager.instance.GetComponentInChildren<ShelterRestInfo>();
-
-        /* 지금은 UpdateTotalData에 PlayerStatData_Scriptable도 넣었지만, 이건 초기화작업(Awake_Start) 때 입력된 후에는 변동하지 않기에, 여기 하단 Awake에 값들을 모두 넣는게 나을 듯 하다.
-           이렇게 하지 않고, 밑의 UpdateTotalData에 이 데이터들을 넣으면, 순환논리에 의해 코드가 작동하지 않고, 오류가 매우 빈번히 일어난다.. 
-           따라서 base 값들은, UpdateTotalData 에 넣지 말자.. 추후 PlayerDataa_Scriptable 값들 모두 Awake에 처리하는 것으로 바꾸기*/
     }
 
     private void OnEnable()
@@ -209,7 +205,7 @@ public class PlayerStatusManager : MonoBehaviour
 
     // @@ From StatusPanel
 
-    public void UpdateTentativeData(int intForTentativeShard) // int가 1일시 tentative Shard 를 더하고, 0 일시 그대로두고, -1일시 빼는 것으로..
+    public void UpdateTentativeData(int intForTentativeShard) 
     {
         tenTativeLevelUpPlus = tentativeHpUpLevelPlus + tentativeFpUpLevelPlus + tentativeDmUpLevelPlus;
 
@@ -443,9 +439,6 @@ public class PlayerStatusManager : MonoBehaviour
         };
         playerAttack.ChangeAttackData(weaponData, newPlayerAttackDamagesInfo);
     }
-
-
-    // @@
 
     public void PlusShard(int plusShard)
     {

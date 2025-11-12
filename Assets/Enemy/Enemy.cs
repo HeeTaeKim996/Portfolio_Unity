@@ -43,7 +43,6 @@ public class Enemy : LivingEntity
 
     public override void OnDamage(float damage, float power, DirectionType directionType, Vector3 fromNormal, Quaternion attackDirection, AttackType attackType, Vector3 hitPoint, Vector3 hitDirection, Attribute attribute)
     {
-        // 자식 클래스에서 구현
     }
 
     public virtual void SetUpToReplayMode()
@@ -74,7 +73,6 @@ public class Enemy : LivingEntity
         }
         else
         {
-            Debug.LogWarning("Enemy: 존재하지 않는 공격 이름");
         }
     }
 }

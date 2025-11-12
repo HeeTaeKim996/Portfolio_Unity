@@ -83,9 +83,6 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         isShielding = false;
         runCountStart = false;
-        /* 원리는 정확히 모르겠지만 아주 좋은 꿀팁인듯. bool 형 자료를 Update 내에 false 로 놓고, 특정 키를 눌렀을 때, 특정 매서드가 발도오디도록하면,
-           특정 키를 눌렀을 때에는 true가, 키를 누르지 않을 때에는 false 가 리턴되는 불형 자료를 만들 수 있음 */
-
 
         
         for (int i = 0; i < Input.touchCount; i++)

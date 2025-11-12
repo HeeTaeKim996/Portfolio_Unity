@@ -56,8 +56,6 @@ public class CinemachineController : MonoBehaviour
         cineTransposer.m_ZDamping = 0;
 
         yield return null; 
-        /* damping값이 0이 아닐 때에, 포지션과 위치가 달라도 시네마신카메라의 특정값에 의해 카메라의 위치와 로테이션이 미세하게 달라서, 밑의 리스토어코루틴 때 화면이 끊긴다. 이를 방지하기 위해, 댐핑값을 0으로 할당하고, 한프레임 쉬고, 포지션과 로테이션값을 저장해야 한다.
-           (시네마신 카메라는 LateUpdate로 작동하기 때문에, 한타임 쉬지 않으면, 댐핑값을 0으로하고 포지션을 저장하면, 위치가 미세하게 다르게 저장됨(포지션과 로테이션이 같아도)) */
 
         originalCameraPosition = mainCam.transform.position;
         originalCameraRotaion = mainCam.transform.rotation;
@@ -116,7 +114,6 @@ public class CinemachineController : MonoBehaviour
         isShelterCameraActive = false;
     }
 
-    // @@ TestScen 에서, CinemachineCam Controll
     public void ChangeMOffsetCircling (float newPlusAngle)
     {
         mOffsetAngle += newPlusAngle * 1.3f;
@@ -142,7 +139,7 @@ public class CinemachineController : MonoBehaviour
 
         float angle = Mathf.Atan2(movec.y, movec.x);
 
-        Vector3 direction = Mathf.Cos(angle) * mainCam.transform.right + Mathf.Sin(angle) * mainCam.transform.forward; // 원리는 모르겠다.. 2차원의 벡터를, 3차원에서 <transform.forward, transform.right> 을 기준으로 생성되는 2차원의 평면으로 생성된 공간에서의 direction이라 한다.
+        Vector3 direction = Mathf.Cos(angle) * mainCam.transform.right + Mathf.Sin(angle) * mainCam.transform.forward;
 
         mainCam.transform.position += direction.normalized * movementSpeed * movec.magnitude * Time.deltaTime;
     }
@@ -156,10 +153,10 @@ public class CinemachineController : MonoBehaviour
     {
         Vector3 direction = new Vector3(-forvec.y, forvec.x, 0);
 
-        Quaternion targetRotation = mainCam.transform.rotation * Quaternion.Euler(direction * 0.1f); // 원리는 모르겠음..
+        Quaternion targetRotation = mainCam.transform.rotation * Quaternion.Euler(direction * 0.1f);
 
         Vector3 euler = targetRotation.eulerAngles;
-        euler.z = 0; // euler.z를 0으로 고정해야, 시야 회전해도, 지면을 수평으로 봄.. 원리는 모르겠음..
+        euler.z = 0;
 
         mainCam.transform.rotation = Quaternion.Euler(euler);
     }

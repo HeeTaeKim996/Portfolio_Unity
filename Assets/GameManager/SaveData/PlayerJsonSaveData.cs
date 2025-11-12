@@ -1,4 +1,4 @@
-[System.Serializable] // => 데이터를 메모리 밖으로 내보낼 수 있는 기능을 함(직렬화)    
+[System.Serializable] 
 public class PlayerJsonSaveData
 {
     public int level;

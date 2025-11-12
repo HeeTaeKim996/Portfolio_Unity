@@ -27,9 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // @@ 하단 2구문은 필요할 때 사용
-        //SaveSystem.ResetPlayerJsonData();
-        //SaveSystem.ResetEquipmentJsonData();
         if (instance == null)
         {
             instance = this;

@@ -66,7 +66,6 @@ public class Item : MonoBehaviour
             }
             else
             {
-                Debug.Log("WeaponItem : 추후 잔여슬롯 없음 알림 UI로 처리");
                 StartCoroutine(oneFrameWaitShowOkButton());
             }
         }

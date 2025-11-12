@@ -69,7 +69,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
     private bool isDieActionOn = false;
 
 
-    // ForTesterSpace (�����ϼ����� ����, �ش� �ڷ���� ��� ���� ó�� �ʿ�
+    // ForTesterSpace 
     [HideInInspector]
     public bool isTest = false;
 
@@ -136,7 +136,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
         movementAudio = gameObject.AddComponent<AudioSource>();
         attackAudio = gameObject.AddComponent<AudioSource>();
 
-        // ForTesterSpace (�����ϼ����� ����, �ش� �ڷ���� ��� ���� ó�� �ʿ�
+        // ForTesterSpace
         if(TestScene_EnemyController.instance != null)
         {
             TestScene_EnemyController.instance.OnSetIsTest += SetIsTest;
@@ -355,10 +355,9 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
 
         if (totalWeight == 0)
         {
-            Debug.LogError("Enemy : DecideAction����, ������ �� �ִ� �׼��� ����");
         }
 
-        int randomWeightPoint = Random.Range(0, totalWeight); // Random �ż��尡, using UnityEngine �� using System �� �ߺ��� �ż���� ���� �ٿ��� ���� 
+        int randomWeightPoint = Random.Range(0, totalWeight);
         int accumulateWeight = 0;
 
 
@@ -371,14 +370,12 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
             }
         }
 
-        Debug.LogError("Enemy : ����̵��ڷ�ƾ���� ���� null ó��");
         return null;
 
     }
 
     protected List<int> CalculateWeights()
     {
-        // �ൿ �߰���, ���� ���� �ʿ�
         int weight_Approach = Cal_Apporach(distanceToTarget);
         int weight_StandOff = Cal_StandOff(distanceToTarget);
         int weight_Attack_Chain1 = Cal_Attack_Chain1(distanceToTarget);
@@ -393,7 +390,6 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
     {
         return new List<IEnumerator>
         {   
-            // �ൿ �߰���, ���� ���� �ʿ�
             Approach(),
             StandOff(),
             Attack_Chain1(),
@@ -435,7 +431,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
     }
     private int Cal_Attack_Chain1(float distanceToTarget)
     {
-        float interpolation = Mathf.Clamp01((float)(calStack_Chain1 + 1) / 5); // Mathf.Clamp01( �Ҽ�); �̷��� �ϸ� �Ҽ��� 1�̻��� �ƴ� �̻� 0�� ��ȯ�Ѵ�. �Ҽ� �տ� (float) ���� �ٿ��� ��
+        float interpolation = Mathf.Clamp01((float)(calStack_Chain1 + 1) / 5);
 
         if(distanceToTarget < 2.5f)
         {
@@ -565,7 +561,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
                 }
                 if (navMeshAgent.enabled)
                 {
-                    navMeshAgent.SetDestination(targetTransform.position); // enabled = false �� �µ���Ƽ���̼��� ��ġ�� ��찡 ���� ��Ȥ �־, �ߺ�ó����
+                    navMeshAgent.SetDestination(targetTransform.position);
                 }
             }
 
@@ -590,7 +586,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
                 navMeshAgent.enabled = false;
                 enemyRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
-                yield return null; // ���� �׺�޽� ������ ���� �׼��ڷ�ƾ �ߵ���, �ߵ��� �ȵǰ� ��� ����� ���� �ɾ�� ����� ���� ���� �߻��ϴµ�, ������ �׺�޽ð� �� ������ ���� �ڷ�ƾ�� �ߵ��ؼ��� �����ϰ� ����.. �׷��� �׺�޽� ���� �������� ���� �ڷ�ƾ �ߵ��� �õ��غ�
+                yield return null;
 
                 StartCoroutine(StartNextCoroutine());
                 yield break;
@@ -1652,9 +1648,8 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
                 {
                     StopCoroutineRoutine(currentCoroutine);
                 }
-                // �������� ó���õ���.. ���� ó���ص� ���� ���� �ߴ� �ȵǴ� ��찡 �־���
 
-                yield return null; // �������� �ʰ� ó�� �õ�
+                yield return null;
                 StartCoroutine(DieAction());
             }
             else
@@ -1914,7 +1909,6 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
     {
         if (mob1.dead) yield break;
 
-        // ForTesterSpace (�����ϼ����� ����, �ش� �ڷ���� ��� ���� ó�� �ʿ�
         if (isTest) yield break;
 
         while (true)
@@ -1933,7 +1927,7 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
             }
             else
             {
-                nextCoroutine = DecideCoroutines(); // DecideNextRunningAttack() �� int �� ��ȯ�ϹǷ�, ���⿡ ������ �ǹ̰� ����
+                nextCoroutine = DecideCoroutines();
             }
 
             yield return null;
@@ -1960,12 +1954,6 @@ public class FieldEnemy_Mob1_Movement : MonoBehaviour
         RestoreIgnoreCollisions();
     }
 
-
-
-
-
-
-    // ForTesterSpace (�����ϼ����� ����, �ش� �ڷ���� ��� ���� ó�� �ʿ�
     public void SetIsTest()
     {
         if (isTest)

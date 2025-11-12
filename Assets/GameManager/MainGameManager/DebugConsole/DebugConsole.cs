@@ -38,8 +38,6 @@ public class DebugConsole : MonoBehaviour
     }
 
     private void HandleLog(string logString, string stackTrace, LogType type)
-        /* �� 3���� ��������, �α׿��� �߻��� �ڵ����� ȣ��Ǵ� ����
-           ����� (1) logString�� ���������, (2) �� (3) �� �����ϸ�, Application.logMessageReceived�� ���������� ȣ����� ���� �� �ֱ� ������, �ż��忡�� ���� ��������� ������ �Ű������� �Է��� */
     {
         // consoleText
         logLines.Add(logString);

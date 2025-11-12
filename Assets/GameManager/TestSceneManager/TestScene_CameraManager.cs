@@ -9,7 +9,7 @@ public class TestScene_CameraManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if(GameManager.instance != null) // 사실 필요하지는 않는 건데, 리플보다가 시뮬레이터 종료하면 GameManager.instance == null 오류 보기 귀찮아서 처리함
+        if(GameManager.instance != null)
         {
             GameManager.instance.cinemachineController.ResetOffsetCircling();
 

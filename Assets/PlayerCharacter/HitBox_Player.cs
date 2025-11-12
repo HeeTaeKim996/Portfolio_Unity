@@ -47,12 +47,11 @@ public class HitBox_Player : MonoBehaviour
     {
         this.playerAttack = playerAttack;   
     }
-    // 플레이중 사용가능한 동적 참조 방법(겟컴대체). this는 이스크립트를 지닌 옵젝. 위 매서드의 변수는 playerAttack스크립트에서 보낸것.
+
 
     private void FixedUpdate()
     {
-        /* 이렇게 처리한 이유는, 시뮬레이터에서는 문제가 없었찌만, 빌드후 폰에서 플레이할 때, 콜라이더 식별후 겟컴까지 소용하는 연산이 폰에서는 느리기 때문에, 힛이팩트 생성 위치가 느리게 생성되어, 엉뚱한 곳에 피가 생성되기 때문에,
-           이전 프레임에서의 히트박스의 위치를 기반으로 피를 생성하도록 함. */
+
 
         previousLineStartPosition = nowLineStartPosition;
         previousLineEndPosition = nowLineEndPosition;

@@ -16,7 +16,7 @@ public class GameOverManager : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         restartButton = GetComponentInChildren<GameOver_RestartButton>();
 
-        respawnPosition = playerHealth.transform.position; // 리스폰 위치 지정안할시, 우선은 시작 위치를 리스폰 위치로 임시로 지정함
+        respawnPosition = playerHealth.transform.position;
     }
     private void Start()
     {
